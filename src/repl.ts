@@ -1,6 +1,5 @@
 import { createInterface } from "readline";
-import { json } from "stream/consumers";
-
+import { getCommands } from "./commands.js";
 export function cleanInput(input: string): string[] {
   const trimmedInput = input.trim();
   const words = trimmedInput.split(/\s+/);
@@ -28,8 +27,19 @@ export function startREPL(): void {
             r1.prompt();
             return;
         } else {
-            const command = cleanedLine[0];
-            console.log(`Your command was: ${command}`);
+            const commandEntered = cleanedLine[0];
+            const commands = getCommands();
+            const command = commands[commandEntered];
+            if (!command) {
+                console.log("Unknown command");
+            } else {
+                try {
+                    command.callback(commands);
+                } catch (err){
+                    console.log(err);
+                }
+                
+            }
             r1.prompt();
         }
     });
