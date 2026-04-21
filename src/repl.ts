@@ -19,7 +19,7 @@ export function startREPL(state: State): void {
     
     rl.prompt();
 
-    rl.on("line", (line) => {
+    rl.on("line", async (line) => {
         
         const cleanedLine = cleanInput(line);
         if (cleanedLine.length === 0) {
@@ -33,7 +33,7 @@ export function startREPL(state: State): void {
                 console.log("Unknown command");
             } else {
                 try {
-                    command.callback(state);
+                    await command.callback(state);
                 } catch (err){
                     console.log(err);
                 }
