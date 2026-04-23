@@ -1,11 +1,10 @@
-import type { CLICommand, State } from "./state.js"
+import type { State } from "./state.js"
 
 export async function commandMapb(state: State) {
     const api = state.pokeapi;
 
     if (!state.prevLocationsURL) {
-        console.log("you're on the first page");
-        return;
+        throw new Error("you're on the first page");
     }
 
     const url = state.prevLocationsURL

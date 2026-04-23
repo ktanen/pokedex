@@ -1,4 +1,4 @@
-import type { CLICommand, State } from "./state.js"
+import type { State } from "./state.js"
 
 export async function commandMap(state: State) {
     const api = state.pokeapi;

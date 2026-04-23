@@ -27,13 +27,13 @@ export function startREPL(state: State): void {
             return;
         } else {
             const commandEntered = cleanedLine[0];
-            
+            const otherArgs = cleanedLine.slice(1);
             const command = commands[commandEntered];
             if (!command) {
                 console.log("Unknown command");
             } else {
                 try {
-                    await command.callback(state);
+                    await command.callback(state, ...otherArgs);
                 } catch (err){
                     console.log(err);
                 }
