@@ -17,7 +17,7 @@ export function getCommands(): Record<string, CLICommand> {
     },
     exit: {
       name: "exit",
-      description: "Exits the pokedex",
+      description: "Exits the Pokedex",
       callback: commandExit,
     },
 
