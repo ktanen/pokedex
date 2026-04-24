@@ -91,7 +91,27 @@ export type Pokemon = {
     name: string;
     url: string;
     base_experience: number;
-};
+    height: number;
+    weight: number;
+    stats: PokemonStat[];
+    types: PokemonType[];
+}
+
+export type PokemonType = {
+  slot: number;
+  type: Type;
+}
+export type Type = {
+  name: string;
+}
+export type PokemonStat = {
+  stat: Stat;
+  base_stat: number;
+}
+
+export type Stat = {
+  name: string;
+}
 
 export type Version2 = {
     name: string;
