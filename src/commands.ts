@@ -6,6 +6,7 @@ import { commandMapb } from "./command_mapb.js";
 import { commandExplore } from "./command_explore.js";
 import { commandCatch } from "./command_catch.js";
 import { commandInspect } from "./command_inspect.js";
+import { commandPokedex } from "./command_pokedex.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
@@ -48,6 +49,12 @@ export function getCommands(): Record<string, CLICommand> {
       name: "inspect",
       description: "Print the name, height, weight, stats, and type(s) of the user-provided Pokemon",
       callback: commandInspect,
+    },
+
+    pokedex: {
+      name: "pokedex",
+      description: "List the names of all caught Pokemon",
+      callback: commandPokedex,
     },
 
     // can add more commands here
